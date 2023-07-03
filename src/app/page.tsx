@@ -2,19 +2,27 @@ import Image from "next/image";
 import "./globals.css";
 import { IconBox } from "./components/IconBox";
 import { ArticleBox } from "./components/ArticleBox";
+import { MdCasino } from "react-icons/md";
+import { BiBasketball } from "react-icons/bi";
 
 export default function Home() {
   return (
     <div className="bg-darkSecondBlue h-full">
       <div className="flex relative">
         <div className="h-[100vh] w-[240px] z-[100] fixed bg-darkBlue">
-          <div className="w-[240px] z-99 h-[70px] bg-darkBlue flex justify-center items-center boxSh">
-            <p className="text-white text-[0.875rem] py-[0.8125rem] px-[1rem]">
-              Casino
-            </p>
-            <p className="text-white text-[0.875rem] py-[0.8125rem] px-[1rem]">
-              Sports
-            </p>
+          <div className="w-[240px] z-99 h-[70px] bg-darkBlue flex justify-center items-center boxSh gap-x-2">
+            <div className="flex items-center">
+              <MdCasino className="w-[1em] h-[1em]" />
+              <p className="text-white text-[0.875rem] py-[0.8125rem] px-[0.5rem]">
+                Casino
+              </p>
+            </div>
+            <div className="flex items-center">
+              <BiBasketball className="w-[1em] h-[1em]" />
+              <p className="text-white text-[0.875rem] py-[0.8125rem] px-[0.5rem]">
+                Sports
+              </p>
+            </div>
           </div>
           <div className="py-[1rem] px-[0.5rem] cursor-pointer">
             <div className="bg-surface rounded-[4rem]">
@@ -27,7 +35,7 @@ export default function Home() {
         <div className="w-full">
           <div className="w-full h-[70px] pl-[240px] fixed z-[99] bg-darkSecondBlue pr-[6px] flex boxSh">
             <div className="px-[3vw] w-full flex justify-between items-center">
-              <p className="text-white">Hey</p>
+              <img className="max-w-[80px]" src="/logo.png" />
               <div className="flex">
                 <a className="text-[0.875rem] py-[0.9375rem] px-[1.25rem]">
                   Sign In
@@ -89,7 +97,7 @@ export default function Home() {
                   <img className="w-[116px] h-[35px]" src="/litecoin.svg" />
                 </div>
                 <div className="my-[20px] w-full h-[2px] bg-lightSurface"></div>
-                <div className="flex flex-wrap justify-between gap-5">
+                <div className="flex flex-wrap justify-around gap-5">
                   <img className="h-[60px]" src="/UFC.svg" />
                   <img className="h-[60px]" src="/UFC.svg" />
                   <img className="h-[60px]" src="/UFC.svg" />
@@ -97,7 +105,7 @@ export default function Home() {
                 </div>
                 <div className="my-[30px] w-full h-[2px] bg-lightSurface"></div>
                 <div className="text-center">
-                  <p>Stake</p>
+                  <img className="max-w-[80px] mx-auto" src="/logo.png" />
                   <p>&copy; 2023 Stake.com | All Rights Reserved.</p>
                   <p>1 BTC = $30,627.87</p>
                   <p>
