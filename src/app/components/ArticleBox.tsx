@@ -26,9 +26,13 @@ export const ArticleBox = ({
           inline: "nearest",
         });
       }}
-      className="flex flex-col gap-y-3 cursor-pointer"
+      className="flex flex-col gap-y-3 cursor-pointer article-container"
     >
-      <img src={imageUrl} alt="No Image" />
+      <img
+        className="pt-[0.9em] article-img ease-in-out duration-300"
+        src={imageUrl}
+        alt="No Image"
+      />
       <p className="text-[18px] font-bold">{title}</p>
       <p className="text-gray text-[14px]">{description}</p>
     </div>
