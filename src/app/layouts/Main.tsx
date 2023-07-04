@@ -15,7 +15,7 @@ export const MainLayout = ({
 }: Props) => {
   return (
     <div className="flex relative">
-      <div className="h-[100vh] w-[240px] z-[100] fixed bg-darkBlue">
+      {/* <div className="h-[100vh] w-[240px] z-[100] fixed bg-darkBlue">
         <div className="w-[240px] z-99 h-[70px] bg-darkBlue flex justify-center items-center boxSh gap-x-2">
           <div className="flex items-center cursor-pointer">
             <MdCasino className="w-[1em] h-[1em]" />
@@ -47,9 +47,9 @@ export const MainLayout = ({
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="w-full">
-        <div className="w-full h-[70px] pl-[240px] fixed z-[99] bg-darkSecondBlue pr-[6px] flex boxSh">
+        <div className="w-full h-[70px]  fixed z-[99] bg-darkSecondBlue pr-[6px] flex boxSh">
           <div className="px-[3vw] w-full flex justify-between items-center">
             <a
               className="cursor-pointer"

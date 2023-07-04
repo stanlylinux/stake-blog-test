@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="pl-[240px] bg-gray800">
+    <footer className=" bg-gray800">
       <div className="py-[40px] px-[3vw] ">
         <div className="flex flex-wrap gap-5 justify-around">
           <img className="w-[116px] h-[35px]" src="/litecoin.svg" />

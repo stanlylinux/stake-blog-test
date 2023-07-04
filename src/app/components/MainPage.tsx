@@ -21,7 +21,7 @@ export const MainPage = ({
   doneLoading,
 }: Props) => {
   return (
-    <div className="pt-[70px] pl-[240px] bg-darkSecondBlue">
+    <div className="pt-[70px]  bg-darkSecondBlue">
       <div className="h-[115px] px-[3vw] flex justify-between items-center bg-lightSurface">
         <p className="text-white text-[1.25rem]">Blog</p>
         <img src="https://mediumrare.imgix.net/group-banner-article.png" />
