@@ -17,13 +17,13 @@ export const MainLayout = ({
     <div className="flex relative">
       <div className="h-[100vh] w-[240px] z-[100] fixed bg-darkBlue">
         <div className="w-[240px] z-99 h-[70px] bg-darkBlue flex justify-center items-center boxSh gap-x-2">
-          <div className="flex items-center">
+          <div className="flex items-center cursor-pointer">
             <MdCasino className="w-[1em] h-[1em]" />
             <p className="text-white text-[0.875rem] py-[0.8125rem] px-[0.5rem]">
               Casino
             </p>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center cursor-pointer">
             <BiBasketball className="w-[1em] h-[1em]" />
             <p className="text-white text-[0.875rem] py-[0.8125rem] px-[0.5rem]">
               Sports
@@ -51,12 +51,24 @@ export const MainLayout = ({
       <div className="w-full">
         <div className="w-full h-[70px] pl-[240px] fixed z-[99] bg-darkSecondBlue pr-[6px] flex boxSh">
           <div className="px-[3vw] w-full flex justify-between items-center">
-            <img className="max-w-[80px]" src="/logo.png" />
+            <a
+              className="cursor-pointer"
+              onClick={() => {
+                setCurrentData({ page: "Main", detail: null });
+                scrollToTop.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                  inline: "nearest",
+                });
+              }}
+            >
+              <img className="max-w-[80px]" src="/logo.png" />
+            </a>
             <div className="flex">
-              <a className="text-[0.875rem] py-[0.9375rem] px-[1.25rem]">
+              <a className="text-[0.875rem] py-[0.9375rem] px-[1.25rem] cursor-pointer">
                 Sign In
               </a>
-              <a className="text-[0.875rem] py-[0.9375rem] px-[1.25rem] bg-primaryBase boxShButton rounded-[5px]">
+              <a className="text-[0.875rem] py-[0.9375rem] px-[1.25rem] bg-primaryBase boxShButton rounded-[5px] cursor-pointer">
                 Register
               </a>
             </div>
