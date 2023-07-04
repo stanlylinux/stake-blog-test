@@ -18,11 +18,13 @@ export const HomePage = () => {
   const articleData = articlesResult?.data.data;
   const iconData = iconsResult?.data.data;
   const mainArticleData = mainArticleResult?.data.data;
+  const doneLoading = articleData && iconData && mainArticleData;
   return (
     <MainLayout scrollToTop={scrollToTop} setCurrentData={setCurrentData}>
       <div ref={scrollToTop}>
         {thisCurrentData.page === "Main" ? (
           <MainPage
+            doneLoading={doneLoading}
             scrollToTop={scrollToTop}
             setCurrentData={setCurrentData}
             articleData={articleData}
