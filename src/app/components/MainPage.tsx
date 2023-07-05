@@ -88,7 +88,7 @@ export const MainPage = ({
                     title={article.attributes.title}
                     description={article.attributes.description}
                     imageUrl={article.attributes.image_url}
-                    category={article.attributes.category.data.attributes.title}
+                    category=""
                     key={idx}
                   />
                 ))}
