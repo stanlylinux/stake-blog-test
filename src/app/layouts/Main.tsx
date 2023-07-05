@@ -55,7 +55,12 @@ export const MainLayout = ({
             <a
               className="cursor-pointer"
               onClick={() => {
-                setCurrentData({ page: "Main", detail: null });
+                setCurrentData({
+                  page: "Main",
+                  detail: null,
+                  category: "",
+                  articlesData: [],
+                });
                 scrollToTop.current?.scrollIntoView({
                   behavior: "smooth",
                   block: "start",

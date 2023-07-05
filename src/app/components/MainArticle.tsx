@@ -19,6 +19,8 @@ export const MainArticle = ({
         setCurrentData({
           page: "Detail",
           detail: { title, description, imageUrl },
+          category: "",
+          articlesData: [],
         });
         scrollToTop.current?.scrollIntoView({
           behavior: "smooth",

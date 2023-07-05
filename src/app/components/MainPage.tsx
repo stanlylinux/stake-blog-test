@@ -10,6 +10,7 @@ interface Props {
   setCurrentData: (param1: any) => void;
   scrollToTop: any;
   doneLoading: boolean;
+  thisCurrentData: any;
 }
 
 export const MainPage = ({
@@ -19,18 +20,25 @@ export const MainPage = ({
   setCurrentData,
   scrollToTop,
   doneLoading,
+  thisCurrentData,
 }: Props) => {
   return (
     <div>
-      <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
-        <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
-          <div className="flex justify-between items-center">
-            <p className="text-white text-[1.5rem] font-semibold">Blog</p>
-            <img src="https://mediumrare.imgix.net/group-banner-article.png" />
+      {!thisCurrentData.category && (
+        <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
+          <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
+            <div className="flex justify-between items-center">
+              <p className="text-white text-[1.5rem] font-semibold">Blog</p>
+              <img src="https://mediumrare.imgix.net/group-banner-article.png" />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="bg-darkSecondBlue w-full px-4 md:px-6 lg:px-[7.4em] py-6 flex flex-col gap-[24px] items-center">
+      )}
+      <div
+        className={`${
+          thisCurrentData.category && "pt-[52px]"
+        } bg-darkSecondBlue w-full px-4 md:px-6 lg:px-[7.4em] py-6 flex flex-col gap-[24px] items-center`}
+      >
         {!doneLoading ? (
           <div className="my-[2rem] mx-auto w-full text-center">
             <FidgetSpinner
@@ -57,14 +65,19 @@ export const MainPage = ({
             )}
             <div className="grid grid-cols-3 mt-[30px] gap-6">
               {iconData &&
-                iconData.map((icon: any, idx: any) => (
-                  <IconBox
-                    scrollToTop={scrollToTop}
-                    key={idx}
-                    imageUrl={icon.attributes.image_url}
-                    title={icon.attributes.title}
-                  />
-                ))}
+                iconData.map(
+                  (icon: any, idx: any) =>
+                    icon.attributes.title.toLowerCase() !== "main" && (
+                      <IconBox
+                        setCurrentData={setCurrentData}
+                        scrollToTop={scrollToTop}
+                        key={idx}
+                        imageUrl={icon.attributes.image_url}
+                        title={icon.attributes.title}
+                        articlesData={icon.attributes.articles.data}
+                      />
+                    )
+                )}
             </div>
             <div className="my-[30px] grid grid-cols-3 gap-6">
               {articleData &&
@@ -75,6 +88,7 @@ export const MainPage = ({
                     title={article.attributes.title}
                     description={article.attributes.description}
                     imageUrl={article.attributes.image_url}
+                    category={article.attributes.category.data.attributes.title}
                     key={idx}
                   />
                 ))}

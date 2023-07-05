@@ -4,11 +4,34 @@ interface Props {
   title: string;
   imageUrl: string;
   scrollToTop: any;
+  setCurrentData: (param1: any) => void;
+  articlesData: any;
 }
 
-export const IconBox = ({ title, imageUrl, scrollToTop }: Props) => {
+export const IconBox = ({
+  title,
+  imageUrl,
+  scrollToTop,
+  setCurrentData,
+  articlesData,
+}: Props) => {
   return (
-    <div className="flex icon-container items-center justify-between rounded-[0.25rem] bg-lightSurface cursor-pointer">
+    <div
+      onClick={() => {
+        setCurrentData({
+          page: "Category",
+          detail: null,
+          category: title,
+          categoryData: articlesData,
+        });
+        scrollToTop.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }}
+      className="flex icon-container items-center justify-between rounded-[0.25rem] bg-lightSurface cursor-pointer"
+    >
       <div className="flex items-center icon-subContainer">
         <img
           className="w-[6rem] h-[6rem] rounded-l-[0.25rem]"
