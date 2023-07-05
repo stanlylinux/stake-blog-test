@@ -1,12 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Proxima";
-  src: url("proxima-nova.otf");
-  font-weight: normal;
-  font-style: normal;
+* {
+  color: white;
+  font-family: inter;
 }
 
 :root {
@@ -58,4 +58,33 @@ body {
   transform: translateY(-0.5rem);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
+}
+
+.shadow-custom {
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2),
+    0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+  --tw-shadow-colored: 0 3px 3px -2px var(--tw-shadow-color),
+    0 3px 4px 0 var(--tw-shadow-color), 0 1px 8px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.icon-container:hover {
+  background-color: #2f4553;
+}
+
+.icon-container {
+  transition: all 0.25s;
+}
+
+.icon-container:hover .icon-icon {
+  transform: translateX(0.5rem);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.icon-icon {
+  transition: all 0.3s;
 }

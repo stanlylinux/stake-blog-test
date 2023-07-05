@@ -1,3 +1,5 @@
+import { MdKeyboardArrowRight } from "react-icons/md";
+
 interface Props {
   title: string;
   imageUrl: string;
@@ -6,16 +8,19 @@ interface Props {
 
 export const IconBox = ({ title, imageUrl, scrollToTop }: Props) => {
   return (
-    <div className="flex items-center justify-between rounded-[0.25rem] bg-lightSurface cursor-pointer">
-      <div className="flex items-center">
+    <div className="flex icon-container items-center justify-between rounded-[0.25rem] bg-lightSurface cursor-pointer">
+      <div className="flex items-center icon-subContainer">
         <img
           className="w-[6rem] h-[6rem] rounded-l-[0.25rem]"
           src={imageUrl}
           alt="No Image"
         />
-        <p className="ml-[1rem]">{title}</p>
+        <p className="ml-[1rem] font-semibold">{title}</p>
       </div>
-      <p className="mr-[2rem]">X</p>
+      <MdKeyboardArrowRight
+        size={30}
+        className="icon-icon mr-[2rem] text-[1.25rem]"
+      />
     </div>
   );
 };

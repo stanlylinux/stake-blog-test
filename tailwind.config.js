@@ -14,6 +14,22 @@ module.exports = {
       },
       colors: {
         gray: "#B1BAD3",
+        "dark-blue-100": "#1A2C38",
+        "dark-blue-200": "#0F212E",
+        "dark-blue-300": "#071D2A",
+        darkslategray: {
+          100: "#2f4553",
+          200: "#213743",
+          300: "#1a2c38",
+        },
+        dodgerblue: "#1475e1",
+        white: "#fff",
+        gray: {
+          100: "#0f212e",
+          200: "#071d2a",
+        },
+        lightsteelblue: "#b1bad3",
+        lavender: "#d5dceb",
       },
       backgroundColor: {
         darkBlue: "#0F212E",

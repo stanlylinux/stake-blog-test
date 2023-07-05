@@ -49,8 +49,9 @@ export const MainLayout = ({
         </div>
       </div> */}
       <div className="w-full">
-        <div className="w-full h-[70px]  fixed z-[99] bg-darkSecondBlue pr-[6px] flex boxSh">
-          <div className="px-[3vw] w-full flex justify-between items-center">
+        <header className="fixed w-full bg-dark-blue-100 shadow-custom flex justify-center font-semibold z-20">
+          <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em] flex justify-between items-center">
+            {/* Stake Logo */}
             <a
               className="cursor-pointer"
               onClick={() => {
@@ -62,18 +63,34 @@ export const MainLayout = ({
                 });
               }}
             >
-              <img className="max-w-[80px]" src="/logo.png" />
+              <img
+                className="w-[120px] max-w-[160px]"
+                alt="Stake"
+                src="/stake-logo.svg"
+              />
             </a>
-            <div className="flex">
-              <a className="text-[0.875rem] py-[0.9375rem] px-[1.25rem] cursor-pointer">
-                Sign In
+
+            <div className="flex flex-row-reverse lg:flex-row items-center py-[9px] gap-2 font-bold text-[0.875rem]">
+              {/* Masuk Button */}
+              <a
+                href="https://stake88.co"
+                target="_blank"
+                className="rounded-[2px] flex items-center justify-center h-[34px] w-[4.75rem] bg-transparent hover:bg-dark-blue-200"
+              >
+                Masuk
               </a>
-              <a className="text-[0.875rem] py-[0.9375rem] px-[1.25rem] bg-primaryBase boxShButton rounded-[5px] cursor-pointer">
-                Register
+
+              {/* Daftar Button */}
+              <a
+                href="https://stake88.co/register"
+                target="_blank"
+                className="relative rounded-[2px] bg-dodgerblue hover:bg-[#124782] shadow-[0px_1px_3px_rgba(0,_0,_0,_0.2),_0px_1px_2px_rgba(0,_0,_0,_0.12),_0px_1px_0px_rgba(255,_255,_255,_0.04)_inset] flex items-center justify-center h-[34px] w-[4.75rem]"
+              >
+                Daftar
               </a>
             </div>
           </div>
-        </div>
+        </header>
         {children}
         <Footer />
       </div>

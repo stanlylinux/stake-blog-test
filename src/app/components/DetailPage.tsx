@@ -6,7 +6,7 @@ interface Props {
 
 export const DetailPage = ({ data }: Props) => {
   return (
-    <div className="pt-[70px]  bg-darkSecondBlue">
+    <div className="pt-[52px] bg-darkSecondBlue">
       <div className="px-[250px] py-[40px]">
         <p className="text-[28px] font-bold">{data.title}</p>
         <div className="flex justify-between items-center my-3">

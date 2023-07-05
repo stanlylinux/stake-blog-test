@@ -26,7 +26,7 @@ export const MainArticle = ({
           inline: "nearest",
         });
       }}
-      className="px-[3vw] grid grid-cols-5 gap-x-6 cursor-pointer article-container"
+      className="grid grid-cols-5 gap-x-6 cursor-pointer article-container"
     >
       <img
         className="thumbnail col-span-3 pt-[0.9em] article-img ease-in-out duration-300"
