@@ -59,18 +59,18 @@ export const HomePage = () => {
             articleDoneLoading={articleDoneLoading}
           />
         ) : thisCurrentData.page === "Category" ? (
-          categoryArticleData ? (
-            <div>
-              <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
-                <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
-                  <div className="flex justify-between items-center">
-                    <p className="text-white text-[1.5rem] font-semibold">
-                      {thisCurrentData.category}
-                    </p>
-                    <img src="https://mediumrare.imgix.net/group-banner-article.png" />
-                  </div>
+          <div>
+            <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
+              <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
+                <div className="flex justify-between items-center">
+                  <p className="text-white text-[1.5rem] font-semibold">
+                    {thisCurrentData.category}
+                  </p>
+                  <img src="https://mediumrare.imgix.net/group-banner-article.png" />
                 </div>
               </div>
+            </div>
+            {categoryArticleData ? (
               <div className="w-full px-4 md:px-6 lg:px-[7.4em]">
                 <div
                   className={`my-[30px] ${
@@ -151,21 +151,21 @@ export const HomePage = () => {
                   </a>
                 </div>
               </div>
-            </div>
-          ) : (
-            <div className="my-[4rem] mx-auto w-full text-center">
-              <FidgetSpinner
-                visible={true}
-                height="120"
-                width="120"
-                ariaLabel="dna-loading"
-                wrapperStyle={{}}
-                wrapperClass="dna-wrapper w-full"
-                ballColors={["#ff0000", "#00ff00", "#0000ff"]}
-                backgroundColor="#F4442E"
-              />
-            </div>
-          )
+            ) : (
+              <div className="my-[4rem] mx-auto w-full text-center">
+                <FidgetSpinner
+                  visible={true}
+                  height="120"
+                  width="120"
+                  ariaLabel="dna-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="dna-wrapper w-full"
+                  ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+                  backgroundColor="#F4442E"
+                />
+              </div>
+            )}
+          </div>
         ) : thisCurrentData.page === "Detail" ? (
           <DetailPage data={thisCurrentData.detail} />
         ) : (
