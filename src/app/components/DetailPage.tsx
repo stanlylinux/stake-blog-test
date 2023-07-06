@@ -4,6 +4,10 @@ interface Props {
   data: any;
 }
 
+function replaceWithBr(props: any) {
+  return props.replace(/\n/g, "<br />");
+}
+
 export const DetailPage = ({ data }: Props) => {
   return (
     <div className="pt-[52px] bg-darkSecondBlue">
@@ -25,7 +29,10 @@ export const DetailPage = ({ data }: Props) => {
         <div className="my-8">
           <img src={data.imageUrl} alt="No Image" />
         </div>
-        <p className="text-gray">{data.description}</p>
+        <p
+          className="text-gray"
+          dangerouslySetInnerHTML={{ __html: replaceWithBr(data.description) }}
+        />
       </div>
     </div>
   );

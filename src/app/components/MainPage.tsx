@@ -47,9 +47,9 @@ export const MainPage = ({
       <div
         className={`${
           thisCurrentData.category && "pt-[52px]"
-        } bg-darkSecondBlue w-full px-4 md:px-6 lg:px-[7.4em] py-6 flex flex-col gap-[24px] items-center`}
+        } bg-darkSecondBlue w-full px-2 md:px-6 lg:px-[7.8em] py-6 flex flex-col gap-[24px] items-center`}
       >
-        {!doneLoading ? (
+        {!doneLoading || !articleData ? (
           <div className="my-[2rem] mx-auto w-full text-center">
             <FidgetSpinner
               visible={true}
@@ -67,9 +67,9 @@ export const MainPage = ({
             {mainArticleData && mainArticleData[0].attributes && (
               <MainArticle
                 setCurrentData={setCurrentData}
-                title={mainArticleData[0].attributes.title}
-                description={mainArticleData[0].attributes.description}
-                imageUrl={mainArticleData[0].attributes.image_url}
+                title={articleData[0].attributes.title}
+                description={articleData[0].attributes.description}
+                imageUrl={articleData[0].attributes.image_url}
                 scrollToTop={scrollToTop}
               />
             )}
@@ -137,7 +137,7 @@ export const MainPage = ({
                     : "text-superGray"
                 }`}
               >
-                Previous
+                Sebelumnya
               </a>
               <a
                 onClick={() => {
@@ -162,7 +162,7 @@ export const MainPage = ({
                     : "text-superGray"
                 }`}
               >
-                Next
+                Berikutnya
               </a>
             </div>
           </div>

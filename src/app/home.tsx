@@ -120,7 +120,7 @@ export const HomePage = () => {
                         : "text-superGray"
                     }`}
                   >
-                    Previous
+                    Sebelumnya
                   </a>
                   <a
                     onClick={() => {
@@ -147,7 +147,7 @@ export const HomePage = () => {
                         : "text-superGray"
                     }`}
                   >
-                    Next
+                    Berikutnya
                   </a>
                 </div>
               </div>
