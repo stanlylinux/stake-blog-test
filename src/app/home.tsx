@@ -73,21 +73,33 @@ export const HomePage = () => {
               </div>
               <div className="w-full px-4 md:px-6 lg:px-[7.4em]">
                 <div
-                  className={`my-[30px] grid grid-cols-2 md:grid-cols-3 gap-6`}
+                  className={`my-[30px] ${
+                    categoryArticleData.length > 0
+                      ? "grid grid-cols-2 md:grid-cols-3 gap-6"
+                      : ""
+                  }`}
                 >
-                  {categoryArticleData.map((article: any, idx: any) => (
-                    <ArticleBox
-                      scrollToTop={scrollToTop}
-                      setCurrentData={setCurrentData}
-                      title={article.attributes.title}
-                      description={article.attributes.description}
-                      imageUrl={article.attributes.image_url}
-                      category="main"
-                      key={idx}
-                    />
-                  ))}
+                  {categoryArticleData.length > 0 ? (
+                    categoryArticleData.map((article: any, idx: any) => (
+                      <ArticleBox
+                        scrollToTop={scrollToTop}
+                        setCurrentData={setCurrentData}
+                        title={article.attributes.title}
+                        description={article.attributes.description}
+                        imageUrl={article.attributes.image_url}
+                        category="main"
+                        key={idx}
+                      />
+                    ))
+                  ) : (
+                    <p className="text-center">No data found!</p>
+                  )}
                 </div>
-                <div className="flex justify-center items-center gap-x-[100px] my-[50px]">
+                <div
+                  className={`${
+                    categoryArticleData.length > 0 ? "" : "hidden"
+                  } flex justify-center items-center gap-x-[100px] my-[50px]`}
+                >
                   <a
                     onClick={() => {
                       if (categoryArticleMeta.pagination.page === 1) return;
@@ -104,7 +116,7 @@ export const HomePage = () => {
                     className={`${
                       categoryArticleMeta &&
                       categoryArticleMeta.pagination.page !== 1
-                        ? "cursor-pointer"
+                        ? "cursor-pointer text-dodgerblue"
                         : "text-superGray"
                     }`}
                   >
@@ -131,7 +143,7 @@ export const HomePage = () => {
                       categoryArticleMeta &&
                       categoryArticleMeta.pagination.page !==
                         categoryArticleMeta.pagination.pageCount
-                        ? "cursor-pointer"
+                        ? "cursor-pointer text-dodgerblue"
                         : "text-superGray"
                     }`}
                   >

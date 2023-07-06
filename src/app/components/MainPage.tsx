@@ -133,7 +133,7 @@ export const MainPage = ({
                 }}
                 className={`${
                   articleMeta && articleMeta.pagination.page !== 1
-                    ? "cursor-pointer"
+                    ? "cursor-pointer text-dodgerblue"
                     : "text-superGray"
                 }`}
               >
@@ -158,7 +158,7 @@ export const MainPage = ({
                   articleMeta &&
                   articleMeta.pagination.page !==
                     articleMeta.pagination.pageCount
-                    ? "cursor-pointer"
+                    ? "cursor-pointer text-dodgerblue"
                     : "text-superGray"
                 }`}
               >
