@@ -5,7 +5,6 @@ interface Props {
   imageUrl: string;
   scrollToTop: any;
   setCurrentData: (param1: any) => void;
-  articlesData: any;
 }
 
 export const IconBox = ({
@@ -13,7 +12,6 @@ export const IconBox = ({
   imageUrl,
   scrollToTop,
   setCurrentData,
-  articlesData,
 }: Props) => {
   return (
     <div
@@ -22,7 +20,7 @@ export const IconBox = ({
           page: "Category",
           detail: null,
           category: title,
-          categoryData: articlesData,
+          categoryPage: 1,
         });
         scrollToTop.current?.scrollIntoView({
           behavior: "smooth",

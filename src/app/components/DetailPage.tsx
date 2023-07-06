@@ -7,8 +7,10 @@ interface Props {
 export const DetailPage = ({ data }: Props) => {
   return (
     <div className="pt-[52px] bg-darkSecondBlue">
-      <div className="px-[300px] py-[30px]">
-        <p className="text-[28px] font-semibold">{data.title}</p>
+      <div className="px-[20px] md:px-[150px] lg:px-[300px] py-[30px]">
+        <p className="text-center md:text-left text-[28px] font-semibold">
+          {data.title}
+        </p>
         <div className="flex justify-between items-center my-3">
           <p className="text-[12px] text-gray">Stake - July 3, 2023</p>
           <div className="flex gap-[1rem]">

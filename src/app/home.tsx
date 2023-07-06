@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { MainPage } from "./components/MainPage";
 import { DetailPage } from "./components/DetailPage";
 import { ArticleBox } from "./components/ArticleBox";
+import { FidgetSpinner } from "react-loader-spinner";
 
 export const HomePage = () => {
   const scrollToTop = useRef<HTMLInputElement>(null);
@@ -13,15 +14,33 @@ export const HomePage = () => {
     page: "Main",
     category: "",
     detail: null,
-    categoryData: [],
+    categoryPage: 1,
   });
-  const { data: articlesResult } = useSWR("/api/articles?populate=*", fetcher);
-  const { data: iconsResult } = useSWR("/api/categories?populate=*", fetcher);
-  const { data: mainArticleResult } = useSWR("/api/main-articles", fetcher);
+  const [articlePage, setArticlePage] = useState(1);
+  const { data: articlesResult } = useSWR(
+    `/api/articles?populate=*&sort=id&pagination[page]=${articlePage}&pagination[pageSize]=6`,
+    fetcher
+  );
+  const { data: iconsResult } = useSWR("/api/categories", fetcher);
+  const { data: mainArticleResult } = useSWR(
+    "/api/main-articles?sort=id",
+    fetcher
+  );
+
+  const { data: categoryArticleResult } = useSWR(
+    `/api/articles?populate=*&sort=id&pagination[page]=${thisCurrentData.categoryPage}&pagination[pageSize]=6&filters[category][title][$eq]=${thisCurrentData.category}`,
+    fetcher
+  );
+
   const articleData = articlesResult?.data.data;
+  const articleMeta = articlesResult?.data.meta;
   const iconData = iconsResult?.data.data;
   const mainArticleData = mainArticleResult?.data.data;
-  const doneLoading = articleData && iconData && mainArticleData;
+  const doneLoading = iconData && mainArticleData;
+  const articleDoneLoading = articleData;
+  const categoryArticleData = categoryArticleResult?.data.data;
+  const categoryArticleMeta = categoryArticleResult?.data.meta;
+
   return (
     <MainLayout scrollToTop={scrollToTop} setCurrentData={setCurrentData}>
       <div ref={scrollToTop}>
@@ -34,37 +53,107 @@ export const HomePage = () => {
             articleData={articleData}
             iconData={iconData}
             mainArticleData={mainArticleData}
+            articlePage={articlePage}
+            setArticlePage={setArticlePage}
+            articleMeta={articleMeta}
+            articleDoneLoading={articleDoneLoading}
           />
-        ) : thisCurrentData.category &&
-          thisCurrentData.page === "Category" &&
-          thisCurrentData.categoryData.length > 0 ? (
-          <div>
-            <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
-              <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
-                <div className="flex justify-between items-center">
-                  <p className="text-white text-[1.5rem] font-semibold">
-                    {thisCurrentData.category}
-                  </p>
-                  <img src="https://mediumrare.imgix.net/group-banner-article.png" />
+        ) : thisCurrentData.page === "Category" ? (
+          categoryArticleData ? (
+            <div>
+              <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
+                <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
+                  <div className="flex justify-between items-center">
+                    <p className="text-white text-[1.5rem] font-semibold">
+                      {thisCurrentData.category}
+                    </p>
+                    <img src="https://mediumrare.imgix.net/group-banner-article.png" />
+                  </div>
+                </div>
+              </div>
+              <div className="w-full px-4 md:px-6 lg:px-[7.4em]">
+                <div
+                  className={`my-[30px] grid grid-cols-2 md:grid-cols-3 gap-6`}
+                >
+                  {categoryArticleData.map((article: any, idx: any) => (
+                    <ArticleBox
+                      scrollToTop={scrollToTop}
+                      setCurrentData={setCurrentData}
+                      title={article.attributes.title}
+                      description={article.attributes.description}
+                      imageUrl={article.attributes.image_url}
+                      category="main"
+                      key={idx}
+                    />
+                  ))}
+                </div>
+                <div className="flex justify-center items-center gap-x-[100px] my-[50px]">
+                  <a
+                    onClick={() => {
+                      if (categoryArticleMeta.pagination.page === 1) return;
+                      setCurrentData((prevState: any) => ({
+                        ...prevState,
+                        categoryPage: prevState.categoryPage - 1,
+                      }));
+                      scrollToTop.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                        inline: "nearest",
+                      });
+                    }}
+                    className={`${
+                      categoryArticleMeta &&
+                      categoryArticleMeta.pagination.page !== 1
+                        ? "cursor-pointer"
+                        : "text-superGray"
+                    }`}
+                  >
+                    Previous
+                  </a>
+                  <a
+                    onClick={() => {
+                      if (
+                        categoryArticleMeta.pagination.page ===
+                        categoryArticleMeta.pagination.pageCount
+                      )
+                        return;
+                      setCurrentData((prevState: any) => ({
+                        ...prevState,
+                        categoryPage: prevState.categoryPage + 1,
+                      }));
+                      scrollToTop.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                        inline: "nearest",
+                      });
+                    }}
+                    className={`${
+                      categoryArticleMeta &&
+                      categoryArticleMeta.pagination.page !==
+                        categoryArticleMeta.pagination.pageCount
+                        ? "cursor-pointer"
+                        : "text-superGray"
+                    }`}
+                  >
+                    Next
+                  </a>
                 </div>
               </div>
             </div>
-            <div className="w-full px-4 md:px-6 lg:px-[7.4em]">
-              <div className={`my-[30px] grid grid-cols-3 gap-6`}>
-                {thisCurrentData.categoryData.map((article: any, idx: any) => (
-                  <ArticleBox
-                    scrollToTop={scrollToTop}
-                    setCurrentData={setCurrentData}
-                    title={article.attributes.title}
-                    description={article.attributes.description}
-                    imageUrl={article.attributes.image_url}
-                    category="main"
-                    key={idx}
-                  />
-                ))}
-              </div>
+          ) : (
+            <div className="my-[4rem] mx-auto w-full text-center">
+              <FidgetSpinner
+                visible={true}
+                height="120"
+                width="120"
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper w-full"
+                ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+                backgroundColor="#F4442E"
+              />
             </div>
-          </div>
+          )
         ) : thisCurrentData.page === "Detail" ? (
           <DetailPage data={thisCurrentData.detail} />
         ) : (

@@ -28,14 +28,14 @@ export const MainArticle = ({
           inline: "nearest",
         });
       }}
-      className="grid grid-cols-5 gap-x-6 cursor-pointer article-container"
+      className={`grid text-center md:text-left gap-y-3 md:grid-cols-5 gap-x-6 cursor-pointer article-container`}
     >
       <img
-        className="thumbnail col-span-3 pt-[0.9em] article-img ease-in-out duration-300"
+        className="thumbnail md:col-span-3 pt-[0.9em] article-img ease-in-out duration-300"
         src={imageUrl}
         alt="No Image"
       />
-      <div className="mt-[15px] col-span-2">
+      <div className="mt-[15px] md:col-span-2">
         <p className="font-bold">{title}</p>
         <p className="mt-[10px] text-gray">{description}</p>
       </div>

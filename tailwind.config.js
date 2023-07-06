@@ -30,6 +30,7 @@ module.exports = {
         },
         lightsteelblue: "#b1bad3",
         lavender: "#d5dceb",
+        superGray: "#888888",
       },
       backgroundColor: {
         darkBlue: "#0F212E",

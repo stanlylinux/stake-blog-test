@@ -2,6 +2,7 @@ import { FidgetSpinner } from "react-loader-spinner";
 import { ArticleBox } from "./ArticleBox";
 import { IconBox } from "./IconBox";
 import { MainArticle } from "./MainArticle";
+import { useRef } from "react";
 
 interface Props {
   mainArticleData: any;
@@ -11,6 +12,10 @@ interface Props {
   scrollToTop: any;
   doneLoading: boolean;
   thisCurrentData: any;
+  articlePage: any;
+  setArticlePage: (param1: any) => void;
+  articleMeta: any;
+  articleDoneLoading: boolean;
 }
 
 export const MainPage = ({
@@ -21,7 +26,12 @@ export const MainPage = ({
   scrollToTop,
   doneLoading,
   thisCurrentData,
+  articlePage,
+  setArticlePage,
+  articleMeta,
+  articleDoneLoading,
 }: Props) => {
+  const thisScrollToTop = useRef<HTMLInputElement>(null);
   return (
     <div>
       {!thisCurrentData.category && (
@@ -63,7 +73,10 @@ export const MainPage = ({
                 scrollToTop={scrollToTop}
               />
             )}
-            <div className="grid grid-cols-3 mt-[30px] gap-6">
+            <div
+              ref={thisScrollToTop}
+              className="grid sm:grid-cols-2 lg:grid-cols-3 mt-[30px] gap-6"
+            >
               {iconData &&
                 iconData.map(
                   (icon: any, idx: any) =>
@@ -74,24 +87,83 @@ export const MainPage = ({
                         key={idx}
                         imageUrl={icon.attributes.image_url}
                         title={icon.attributes.title}
-                        articlesData={icon.attributes.articles.data}
                       />
                     )
                 )}
             </div>
-            <div className="my-[30px] grid grid-cols-3 gap-6">
-              {articleData &&
-                articleData.map((article: any, idx: any) => (
-                  <ArticleBox
-                    scrollToTop={scrollToTop}
-                    setCurrentData={setCurrentData}
-                    title={article.attributes.title}
-                    description={article.attributes.description}
-                    imageUrl={article.attributes.image_url}
-                    category=""
-                    key={idx}
-                  />
-                ))}
+            {!articleDoneLoading ? (
+              <div className="my-[4rem] mx-auto w-full text-center">
+                <FidgetSpinner
+                  visible={true}
+                  height="120"
+                  width="120"
+                  ariaLabel="dna-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="dna-wrapper w-full"
+                  ballColors={["#ff0000", "#00ff00", "#0000ff"]}
+                  backgroundColor="#F4442E"
+                />
+              </div>
+            ) : (
+              <div className="my-[30px] grid grid-cols-2 md:grid-cols-3 gap-6">
+                {articleData &&
+                  articleData.map((article: any, idx: any) => (
+                    <ArticleBox
+                      scrollToTop={scrollToTop}
+                      setCurrentData={setCurrentData}
+                      title={article.attributes.title}
+                      description={article.attributes.description}
+                      imageUrl={article.attributes.image_url}
+                      category=""
+                      key={idx}
+                    />
+                  ))}
+              </div>
+            )}
+            <div className="flex justify-center items-center gap-x-[100px] mt-[50px]">
+              <a
+                onClick={() => {
+                  if (articleMeta && articleMeta.pagination.page === 1) return;
+                  setArticlePage((prevState: any) => prevState - 1);
+                  thisScrollToTop.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                  });
+                }}
+                className={`${
+                  articleMeta && articleMeta.pagination.page !== 1
+                    ? "cursor-pointer"
+                    : "text-superGray"
+                }`}
+              >
+                Previous
+              </a>
+              <a
+                onClick={() => {
+                  if (
+                    articleMeta &&
+                    articleMeta.pagination.page ==
+                      articleMeta.pagination.pageCount
+                  )
+                    return;
+                  setArticlePage((prevState: any) => prevState + 1);
+                  thisScrollToTop.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                  });
+                }}
+                className={`${
+                  articleMeta &&
+                  articleMeta.pagination.page !==
+                    articleMeta.pagination.pageCount
+                    ? "cursor-pointer"
+                    : "text-superGray"
+                }`}
+              >
+                Next
+              </a>
             </div>
           </div>
         )}
