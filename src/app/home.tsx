@@ -22,10 +22,6 @@ export const HomePage = () => {
     fetcher
   );
   const { data: iconsResult } = useSWR("/api/categories", fetcher);
-  const { data: mainArticleResult } = useSWR(
-    "/api/main-articles?sort=id",
-    fetcher
-  );
 
   const { data: categoryArticleResult } = useSWR(
     `/api/articles?populate=*&sort=id&pagination[page]=${thisCurrentData.categoryPage}&pagination[pageSize]=6&filters[category][title][$eq]=${thisCurrentData.category}`,
@@ -35,11 +31,12 @@ export const HomePage = () => {
   const articleData = articlesResult?.data.data;
   const articleMeta = articlesResult?.data.meta;
   const iconData = iconsResult?.data.data;
-  const mainArticleData = mainArticleResult?.data.data;
-  const doneLoading = iconData && mainArticleData;
+  const doneLoading = iconData;
   const articleDoneLoading = articleData;
   const categoryArticleData = categoryArticleResult?.data.data;
   const categoryArticleMeta = categoryArticleResult?.data.meta;
+
+  console.log(articleData, "<<< DATA");
 
   return (
     <MainLayout scrollToTop={scrollToTop} setCurrentData={setCurrentData}>
@@ -52,7 +49,6 @@ export const HomePage = () => {
             setCurrentData={setCurrentData}
             articleData={articleData}
             iconData={iconData}
-            mainArticleData={mainArticleData}
             articlePage={articlePage}
             setArticlePage={setArticlePage}
             articleMeta={articleMeta}
@@ -87,6 +83,7 @@ export const HomePage = () => {
                         title={article.attributes.title}
                         description={article.attributes.description}
                         imageUrl={article.attributes.image_url}
+                        articleDate={article.attributes.article_date}
                         category="main"
                         key={idx}
                       />

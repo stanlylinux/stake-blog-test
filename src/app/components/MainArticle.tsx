@@ -4,6 +4,7 @@ interface Props {
   imageUrl: string;
   setCurrentData: (param1: any) => void;
   scrollToTop: any;
+  articleDate: any;
 }
 
 export const MainArticle = ({
@@ -12,13 +13,14 @@ export const MainArticle = ({
   description,
   setCurrentData,
   scrollToTop,
+  articleDate,
 }: Props) => {
   return (
     <div
       onClick={() => {
         setCurrentData({
           page: "Detail",
-          detail: { title, description, imageUrl },
+          detail: { title, description, imageUrl, articleDate },
           category: "",
           articlesData: [],
         });

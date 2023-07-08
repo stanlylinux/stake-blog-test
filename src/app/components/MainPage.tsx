@@ -5,7 +5,6 @@ import { MainArticle } from "./MainArticle";
 import { useRef } from "react";
 
 interface Props {
-  mainArticleData: any;
   iconData: any;
   articleData: any;
   setCurrentData: (param1: any) => void;
@@ -19,7 +18,6 @@ interface Props {
 }
 
 export const MainPage = ({
-  mainArticleData,
   iconData,
   articleData,
   setCurrentData,
@@ -64,12 +62,13 @@ export const MainPage = ({
           </div>
         ) : (
           <div className="">
-            {mainArticleData && mainArticleData[0].attributes && (
+            {articleData && articleData[0].attributes && (
               <MainArticle
                 setCurrentData={setCurrentData}
                 title={articleData[0].attributes.title}
                 description={articleData[0].attributes.description}
                 imageUrl={articleData[0].attributes.image_url}
+                articleDate={articleData[0].attributes.article_date}
                 scrollToTop={scrollToTop}
               />
             )}
@@ -114,6 +113,7 @@ export const MainPage = ({
                       title={article.attributes.title}
                       description={article.attributes.description}
                       imageUrl={article.attributes.image_url}
+                      articleDate={article.attributes.article_date}
                       category=""
                       key={idx}
                     />

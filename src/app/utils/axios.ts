@@ -19,7 +19,7 @@ apiAdmin.interceptors.request.use(async (requestConfig: any) => {
         }
       );
 
-      Cookies.set("access-token-stake-blog", result?.data.jwt);
+      Cookies.set("access-token-stake-blog", result?.data.jwt, { expires: 1 });
     }
     (requestConfig.headers as AxiosRequestHeaders)[
       "Authorization"

@@ -5,6 +5,7 @@ interface Props {
   setCurrentData: (param1: any) => void;
   scrollToTop: any;
   category: string;
+  articleDate: any;
 }
 
 export const ArticleBox = ({
@@ -14,13 +15,14 @@ export const ArticleBox = ({
   setCurrentData,
   scrollToTop,
   category,
+  articleDate,
 }: Props) => {
   return (
     <div
       onClick={() => {
         setCurrentData({
           page: "Detail",
-          detail: { title, description, imageUrl },
+          detail: { title, description, imageUrl, articleDate },
           category: "",
           articlesData: [],
         });

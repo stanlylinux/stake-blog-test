@@ -16,7 +16,7 @@ export const DetailPage = ({ data }: Props) => {
           {data.title}
         </p>
         <div className="flex justify-between items-center my-3">
-          <p className="text-[12px] text-gray">Stake - July 3, 2023</p>
+          <p className="text-[12px] text-gray">Stake88 - {data.articleDate}</p>
           <div className="flex gap-[1rem]">
             <div className="rounded-full bg-darkBlue p-[12px] cursor-pointer">
               <FaFacebookF />
