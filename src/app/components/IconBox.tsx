@@ -1,10 +1,15 @@
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useRouter } from "next/router";
+
+import { useDispatch } from "react-redux";
+import { categoryActions } from "../stores";
 
 interface Props {
   title: string;
   imageUrl: string;
   scrollToTop: any;
   setCurrentData: (param1: any) => void;
+  id: string;
 }
 
 export const IconBox = ({
@@ -12,21 +17,15 @@ export const IconBox = ({
   imageUrl,
   scrollToTop,
   setCurrentData,
+  id,
 }: Props) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   return (
     <div
       onClick={() => {
-        setCurrentData({
-          page: "Category",
-          detail: null,
-          category: title,
-          categoryPage: 1,
-        });
-        scrollToTop.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
+        dispatch(categoryActions.setCategory({ id, name: title }));
+        router.push(`/category/${id}`);
       }}
       className="flex icon-container items-center justify-between rounded-[0.25rem] bg-lightSurface cursor-pointer"
     >

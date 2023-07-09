@@ -69,6 +69,7 @@ export const MainPage = ({
                 description={articleData[0].attributes.description}
                 imageUrl={articleData[0].attributes.image_url}
                 articleDate={articleData[0].attributes.article_date}
+                id={articleData[0].id}
                 scrollToTop={scrollToTop}
               />
             )}
@@ -86,6 +87,7 @@ export const MainPage = ({
                         key={idx}
                         imageUrl={icon.attributes.image_url}
                         title={icon.attributes.title}
+                        id={icon.id}
                       />
                     )
                 )}
@@ -108,14 +110,12 @@ export const MainPage = ({
                 {articleData &&
                   articleData.map((article: any, idx: any) => (
                     <ArticleBox
-                      scrollToTop={scrollToTop}
-                      setCurrentData={setCurrentData}
                       title={article.attributes.title}
                       description={article.attributes.description}
                       imageUrl={article.attributes.image_url}
                       articleDate={article.attributes.article_date}
-                      category=""
                       key={idx}
+                      id={article.id}
                     />
                   ))}
               </div>

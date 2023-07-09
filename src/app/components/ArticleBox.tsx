@@ -1,36 +1,37 @@
+import { useDispatch } from "react-redux";
+import { articleDetailActions } from "../stores";
+import { useRouter } from "next/navigation";
+
 interface Props {
+  id: string;
   imageUrl: string;
   title: string;
   description: string;
-  setCurrentData: (param1: any) => void;
-  scrollToTop: any;
-  category: string;
   articleDate: any;
 }
 
 export const ArticleBox = ({
+  id,
   imageUrl,
   title,
   description,
-  setCurrentData,
-  scrollToTop,
-  category,
   articleDate,
 }: Props) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   return (
     <div
       onClick={() => {
-        setCurrentData({
-          page: "Detail",
-          detail: { title, description, imageUrl, articleDate },
-          category: "",
-          articlesData: [],
-        });
-        scrollToTop.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
+        dispatch(
+          articleDetailActions.setArticleDetail({
+            title,
+            description,
+            imageUrl,
+            articleDate,
+            id,
+          })
+        );
+        router.push(`/article/${id}`);
       }}
       className="flex flex-col gap-y-3 cursor-pointer article-container"
     >

@@ -1,18 +1,14 @@
 import { Footer } from "@/app/components/Footer";
 import { BiBasketball } from "react-icons/bi";
 import { MdCasino } from "react-icons/md";
+import { useRouter } from "next/router";
 
 interface Props {
   children: any;
-  setCurrentData: (param1: any) => void;
-  scrollToTop: any;
 }
 
-export const MainLayout = ({
-  children,
-  setCurrentData,
-  scrollToTop,
-}: Props) => {
+export const MainLayout = ({ children }: Props) => {
+  const router = useRouter();
   return (
     <div className="flex relative">
       {/* <div className="h-[100vh] w-[240px] z-[100] fixed bg-darkBlue">
@@ -55,17 +51,7 @@ export const MainLayout = ({
             <a
               className="cursor-pointer"
               onClick={() => {
-                setCurrentData({
-                  page: "Main",
-                  detail: null,
-                  category: "",
-                  articlesData: [],
-                });
-                scrollToTop.current?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                  inline: "nearest",
-                });
+                router.push("/");
               }}
             >
               <img
@@ -96,7 +82,7 @@ export const MainLayout = ({
             </div>
           </div>
         </header>
-        {children}
+        <div className="bg-darkSecondBlue">{children}</div>
         <Footer />
       </div>
     </div>
