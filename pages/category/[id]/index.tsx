@@ -3,13 +3,14 @@ import { ArticleBox } from "@/app/components/ArticleBox";
 import { MainLayout } from "@/app/layouts/Main";
 import { RootState } from "@/app/stores";
 import { fetcher } from "@/app/utils/axios";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FidgetSpinner } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
 export default function Category() {
+  const scrollToTop = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const category = useSelector((state: RootState) => state.category);
   const [page, setPage] = useState(1);
@@ -33,7 +34,7 @@ export default function Category() {
 
   return (
     <MainLayout>
-      <div>
+      <div ref={scrollToTop}>
         <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
           <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
             <div className="flex justify-between items-center">
@@ -87,6 +88,11 @@ export default function Category() {
               <a
                 onClick={() => {
                   if (prevDisabled) return;
+                  scrollToTop.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                  });
                   setPage((prevState: any) => prevState - 1);
                 }}
                 className={`${
@@ -100,6 +106,11 @@ export default function Category() {
               <a
                 onClick={() => {
                   if (nextDisabled) return;
+                  scrollToTop.current?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                  });
                   setPage((prevState: any) => prevState + 1);
                 }}
                 className={`${
