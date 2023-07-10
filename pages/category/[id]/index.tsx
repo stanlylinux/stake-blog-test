@@ -71,6 +71,12 @@ export default function Category() {
               )}
             </div>
             <div
+              style={{
+                display:
+                  categoryArticleData &&
+                  categoryArticleData.length === 0 &&
+                  "none",
+              }}
               className={`${
                 categoryArticleData && categoryArticleData.length > 0
                   ? ""

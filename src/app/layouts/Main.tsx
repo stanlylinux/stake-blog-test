@@ -10,7 +10,7 @@ interface Props {
 export const MainLayout = ({ children }: Props) => {
   const router = useRouter();
   return (
-    <div className="flex relative">
+    <div className="flex relative bg-dark-blue-100">
       {/* <div className="h-[100vh] w-[240px] z-[100] fixed bg-darkBlue">
         <div className="w-[240px] z-99 h-[70px] bg-darkBlue flex justify-center items-center boxSh gap-x-2">
           <div className="flex items-center cursor-pointer">
