@@ -45,7 +45,7 @@ export default function Category() {
           </div>
         </div>
         {categoryArticleData ? (
-          <div className="w-full px-4 md:px-6 lg:px-[7.4em]">
+          <div className="max-w-[1440px] w-full px-2 md:px-6 lg:px-[7.8em]">
             <div
               className={`my-[30px] ${
                 categoryArticleData && categoryArticleData.length > 0
@@ -76,6 +76,7 @@ export default function Category() {
                   categoryArticleData &&
                   categoryArticleData.length === 0 &&
                   "none",
+                padding: "30px 0",
               }}
               className={`${
                 categoryArticleData && categoryArticleData.length > 0
