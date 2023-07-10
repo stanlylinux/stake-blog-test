@@ -47,7 +47,7 @@ export const MainPage = ({
           thisCurrentData.category && "pt-[52px]"
         } bg-darkSecondBlue w-full px-2 md:px-6 lg:px-[7.8em] py-6 flex flex-col gap-[24px] items-center`}
       >
-        {!doneLoading || !articleData ? (
+        {!doneLoading ? (
           <div className="my-[2rem] mx-auto w-full text-center">
             <FidgetSpinner
               visible={true}
