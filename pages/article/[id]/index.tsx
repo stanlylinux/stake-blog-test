@@ -29,7 +29,7 @@ export default function Article() {
       <MainLayout>
         {detail ? (
           <div className="pt-[52px] bg-darkSecondBlue">
-            <div className="px-[20px] md:px-[150px] lg:px-[300px] py-[30px]">
+            <div className="container mx-auto detail-container py-[30px]">
               <p className="text-center md:text-left text-[28px] font-semibold">
                 {detail.attributes.title}
               </p>

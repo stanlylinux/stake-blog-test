@@ -162,3 +162,39 @@ body {
 .lightGray-important * {
   color: #b1bad3 !important;
 }
+
+@media (min-width: 0px) and (max-width: 640px) {
+  .detail-container {
+    padding: 30px 20px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .detail-container {
+    padding: 30px 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .detail-container {
+    padding: 30px 250px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .detail-container {
+    padding: 30px 300px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .detail-container {
+    padding: 30px 380px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .detail-container {
+    padding: 30px 380px;
+  }
+}
