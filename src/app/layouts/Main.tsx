@@ -46,7 +46,7 @@ export const MainLayout = ({ children }: Props) => {
       </div> */}
       <div className="w-full">
         <header className="fixed w-full bg-dark-blue-100 shadow-custom flex justify-center font-semibold z-20">
-          <div className="max-w-[1440px] w-full px-4 md:px-10 px-4 md:px-10 lg:px-[12em] flex justify-between items-center">
+          <div className="max-w-[1440px] w-full px-4 md:px-10 lg:px-[12em] flex justify-between items-center">
             {/* Stake Logo */}
             <a
               className="cursor-pointer"

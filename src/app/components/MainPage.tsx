@@ -34,7 +34,7 @@ export const MainPage = ({
     <div>
       {!thisCurrentData.category && (
         <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
-          <div className="max-w-[1440px] w-full px-4 md:px-10 px-4 md:px-10 lg:px-[12em]">
+          <div className="max-w-[1440px] w-full px-4 md:px-10 lg:px-[12em]">
             <div className="flex justify-between items-center">
               <p className="text-white text-[1.5rem] font-semibold">Blog</p>
               <img src="https://mediumrare.imgix.net/group-banner-article.png" />
@@ -45,7 +45,7 @@ export const MainPage = ({
       <div
         className={`${
           thisCurrentData.category && "pt-[52px]"
-        } bg-darkSecondBlue w-full px-4 md:px-10 px-4 md:px-10 lg:px-[12em] py-6 flex flex-col gap-[24px] items-center`}
+        } bg-darkSecondBlue w-full px-4 md:px-10 lg:px-[12em] py-6 flex flex-col gap-[24px] items-center`}
       >
         {!doneLoading ? (
           <div className="my-[2rem] mx-auto w-full text-center">

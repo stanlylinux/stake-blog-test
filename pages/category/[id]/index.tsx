@@ -36,7 +36,7 @@ export default function Category() {
     <MainLayout>
       <div ref={scrollToTop}>
         <div className="pt-[52px] w-[100vw] w-full bg-lightSurface">
-          <div className="max-w-[1440px] w-full px-4 md:px-10 px-4 md:px-10 lg:px-[12em]">
+          <div className="max-w-[1440px] w-full px-4 md:px-10 lg:px-[12em]">
             <div className="flex justify-between items-center">
               <p className="text-white text-[1.5rem] font-semibold">
                 {category.category.name}
@@ -46,7 +46,7 @@ export default function Category() {
           </div>
         </div>
         {categoryArticleData ? (
-          <div className="max-w-[1440px] w-full px-4 md:px-10 px-4 md:px-10 lg:px-[12em]">
+          <div className="max-w-[1440px] w-full px-4 md:px-10 lg:px-[12em]">
             <div
               className={`my-[30px] ${
                 categoryArticleData && categoryArticleData.length > 0
