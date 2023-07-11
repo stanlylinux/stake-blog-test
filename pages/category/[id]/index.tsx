@@ -79,11 +79,11 @@ export default function Category() {
                   "none",
                 padding: "30px 0",
               }}
-              className={`${
+              className={`font-semibold ${
                 categoryArticleData && categoryArticleData.length > 0
                   ? ""
                   : "hidden"
-              } flex justify-center items-center gap-x-[100px] my-[50px]`}
+              } flex justify-center items-center gap-x-[50px] my-[50px]`}
             >
               <a
                 onClick={() => {
@@ -96,9 +96,7 @@ export default function Category() {
                   setPage((prevState: any) => prevState - 1);
                 }}
                 className={`${
-                  prevDisabled
-                    ? "text-superGray"
-                    : "cursor-pointer text-dodgerblue"
+                  prevDisabled ? "text-superGray" : "cursor-pointer text-white"
                 }`}
               >
                 Sebelumnya
@@ -113,10 +111,8 @@ export default function Category() {
                   });
                   setPage((prevState: any) => prevState + 1);
                 }}
-                className={`${
-                  nextDisabled
-                    ? "text-superGray"
-                    : "cursor-pointer text-dodgerblue"
+                className={`font-semibold ${
+                  nextDisabled ? "text-superGray" : "cursor-pointer text-white"
                 }`}
               >
                 Berikutnya

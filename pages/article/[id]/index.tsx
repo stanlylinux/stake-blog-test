@@ -34,7 +34,7 @@ export default function Article() {
                 {detail.attributes.title}
               </p>
               <div className="flex justify-between items-center my-3">
-                <p className="text-[12px] text-gray">
+                <p className="text-[12px] text-lightGray">
                   Stake88 - {detail.attributes.article_date}
                 </p>
                 <div className="flex gap-[1rem]">
@@ -50,7 +50,7 @@ export default function Article() {
                 <img src={detail.attributes.image_url} alt="No Image" />
               </div>
               <p
-                className="text-gray"
+                className="text-lightGray text-base lightGray-important"
                 dangerouslySetInnerHTML={{
                   __html: replaceWithBr(detail.attributes.description),
                 }}

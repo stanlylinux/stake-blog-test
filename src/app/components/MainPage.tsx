@@ -120,7 +120,7 @@ export const MainPage = ({
                   ))}
               </div>
             )}
-            <div className="flex justify-center items-center gap-x-[100px] mt-[50px]">
+            <div className="flex justify-center items-center gap-x-[50px] mt-[50px]">
               <a
                 onClick={() => {
                   if (articleMeta && articleMeta.pagination.page === 1) return;
@@ -131,9 +131,9 @@ export const MainPage = ({
                     inline: "nearest",
                   });
                 }}
-                className={`${
+                className={`font-semibold ${
                   articleMeta && articleMeta.pagination.page !== 1
-                    ? "cursor-pointer text-dodgerblue"
+                    ? "cursor-pointer text-white"
                     : "text-superGray"
                 }`}
               >
@@ -154,11 +154,11 @@ export const MainPage = ({
                     inline: "nearest",
                   });
                 }}
-                className={`${
+                className={`font-semibold ${
                   articleMeta &&
                   articleMeta.pagination.page !==
                     articleMeta.pagination.pageCount
-                    ? "cursor-pointer text-dodgerblue"
+                    ? "cursor-pointer text-white"
                     : "text-superGray"
                 }`}
               >

@@ -45,8 +45,10 @@ export const MainArticle = ({
         alt="No Image"
       />
       <div className="mt-[15px] md:col-span-2">
-        <p className="font-bold">{title}</p>
-        <p className="mt-[10px] text-gray">{description}</p>
+        <p className="font-bold text-lg">{title}</p>
+        <p className="mt-[10px] text-lightGray text-sm lightGray-important">
+          {description}
+        </p>
       </div>
     </div>
   );

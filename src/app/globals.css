@@ -1,12 +1,82 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/2555e1/00000000000000007735e603/30/l?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n7&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/2555e1/00000000000000007735e603/30/d?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n7&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/2555e1/00000000000000007735e603/30/a?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n7&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/78aca8/00000000000000007735e60d/30/l?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n6&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/78aca8/00000000000000007735e60d/30/d?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n6&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/78aca8/00000000000000007735e60d/30/a?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n6&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/l?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n4&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/d?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n4&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/efe4a5/00000000000000007735e609/30/a?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=n4&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "proxima-nova";
+  src: url("https://use.typekit.net/af/3322cc/00000000000000007735e616/30/l?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=i4&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/3322cc/00000000000000007735e616/30/d?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=i4&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/3322cc/00000000000000007735e616/30/a?primer=9e9145798bfc6b7954a6cb7abc2ead67980260945baf1d129a2d2e98d0352745&fvd=i4&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "brandon-grotesque";
+  src: url("https://use.typekit.net/af/8f4e31/0000000000000000000132e3/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/8f4e31/0000000000000000000132e3/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/8f4e31/0000000000000000000132e3/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
   color: white;
-  font-family: inter;
+  font-family: "proxima-nova", sans-serif;
 }
 
 :root {
@@ -87,4 +157,8 @@ body {
 
 .icon-icon {
   transition: all 0.3s;
+}
+
+.lightGray-important * {
+  color: #b1bad3 !important;
 }

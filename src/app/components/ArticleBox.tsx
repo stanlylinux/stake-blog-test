@@ -40,17 +40,18 @@ export const ArticleBox = ({
         src={imageUrl}
         alt="No Image"
       />
-      <p className="text-[18px] font-bold">
+      <p className="text-lg font-bold">
         {title.trim().length > 30 ? title.trim().slice(0, 30) + "..." : title}
       </p>
       <p
+        style={{ color: "#B1BAD3" }}
         dangerouslySetInnerHTML={{
           __html:
             description.trim().length > 50
               ? description.trim().slice(0, 100) + "..."
               : description,
         }}
-        className="text-gray text-[14px]"
+        className="text-lightGray text-sm lightGray-important"
       />
     </div>
   );
