@@ -189,13 +189,13 @@ body {
 
 @media (min-width: 1280px) and (max-width: 1535px) {
   .detail-container {
-    padding: 30px 380px;
+    padding: 30px 350px;
   }
 }
 
 @media (min-width: 1536px) {
   .detail-container {
-    padding: 30px 380px;
+    padding: 30px 350px;
   }
 }
 
