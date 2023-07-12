@@ -18,10 +18,15 @@ export default function HomePage() {
     `/api/articles?populate=*&sort=id&pagination[page]=${articlePage}&pagination[pageSize]=6`,
     fetcher
   );
+  const { data: mainArticlesResult } = useSWR(
+    `/api/articles?filters[main][$eq]=true`,
+    fetcher
+  );
   const { data: iconsResult } = useSWR("/api/categories", fetcher);
 
   const articleData = articlesResult?.data.data;
   const articleMeta = articlesResult?.data.meta;
+  const mainArticleData = mainArticlesResult?.data.data;
   const iconData = iconsResult?.data.data;
   const doneLoading = iconData;
   const articleDoneLoading = articleData;
@@ -40,6 +45,7 @@ export default function HomePage() {
           setArticlePage={setArticlePage}
           articleMeta={articleMeta}
           articleDoneLoading={articleDoneLoading}
+          mainArticleData={mainArticleData}
         />
       </div>
     </MainLayout>

@@ -7,6 +7,7 @@ import { useRef } from "react";
 interface Props {
   iconData: any;
   articleData: any;
+  mainArticleData: any;
   setCurrentData: (param1: any) => void;
   scrollToTop: any;
   doneLoading: boolean;
@@ -28,6 +29,7 @@ export const MainPage = ({
   setArticlePage,
   articleMeta,
   articleDoneLoading,
+  mainArticleData,
 }: Props) => {
   const thisScrollToTop = useRef<HTMLInputElement>(null);
   return (
@@ -62,17 +64,19 @@ export const MainPage = ({
           </div>
         ) : (
           <div className="">
-            {articleData && articleData[0].attributes && (
-              <MainArticle
-                setCurrentData={setCurrentData}
-                title={articleData[0].attributes.title}
-                description={articleData[0].attributes.description}
-                imageUrl={articleData[0].attributes.image_url}
-                articleDate={articleData[0].attributes.article_date}
-                id={articleData[0].id}
-                scrollToTop={scrollToTop}
-              />
-            )}
+            {mainArticleData &&
+              mainArticleData.length > 0 &&
+              mainArticleData[0].attributes && (
+                <MainArticle
+                  setCurrentData={setCurrentData}
+                  title={mainArticleData[0].attributes.title}
+                  description={mainArticleData[0].attributes.description}
+                  imageUrl={mainArticleData[0].attributes.image_url}
+                  articleDate={mainArticleData[0].attributes.article_date}
+                  id={mainArticleData[0].id}
+                  scrollToTop={scrollToTop}
+                />
+              )}
             <div
               ref={thisScrollToTop}
               className="grid sm:grid-cols-2 lg:grid-cols-3 mt-[30px] gap-6"

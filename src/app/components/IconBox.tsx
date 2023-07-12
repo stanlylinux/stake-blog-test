@@ -35,7 +35,7 @@ export const IconBox = ({
           src={imageUrl}
           alt="No Image"
         />
-        <p className="ml-[1rem] font-semibold">{title}</p>
+        <p className="ml-[1rem] font-semibold text-lg">{title}</p>
       </div>
       <MdKeyboardArrowRight
         size={30}
