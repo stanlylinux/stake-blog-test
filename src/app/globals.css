@@ -219,7 +219,7 @@ body {
   color: #fff !important;
   padding: 0;
   margin: 0;
-  line-height: 0.1;
+  line-height: 1;
 }
 
 .dangerous-div p {
