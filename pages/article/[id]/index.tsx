@@ -38,12 +38,18 @@ export default function Article() {
                   Stake88 - {detail.attributes.article_date}
                 </p>
                 <div className="flex gap-[1rem]">
-                  <div className="rounded-full bg-darkBlue p-[12px] cursor-pointer">
+                  <a
+                    href={detail.attributes.fb_link}
+                    className="rounded-full bg-darkBlue p-[12px] cursor-pointer"
+                  >
                     <FaFacebookF />
-                  </div>
-                  <div className="rounded-full bg-darkBlue p-[12px] cursor-pointer">
+                  </a>
+                  <a
+                    href={detail.attributes.twitter_link}
+                    className="rounded-full bg-darkBlue p-[12px] cursor-pointer"
+                  >
                     <FaTwitter />
-                  </div>
+                  </a>
                 </div>
               </div>
               <div className="my-8">
