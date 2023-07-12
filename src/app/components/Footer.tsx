@@ -21,11 +21,11 @@ export const Footer = () => {
           src="/stake-logo.svg"
         />
 
-        <p className="text-lightsteelblue text-[12px]">
+        <p className="text-lightsteelblue text-[13px]">
           © 2023 Stake88 | All Rights Reserved.
         </p>
 
-        <p className="relative text-lightsteelblue text-[11px] leading-[18px] text-center flex items-center justify-center w-[93%] md:w-[80%]">
+        <p className="relative text-lightsteelblue text-[12px] leading-[18px] text-center flex items-center justify-center w-[93%] md:w-[80%]">
           Stake88 is not affiliated, associated, authorized, endorsed by, or in
           any way officially connected with Stake.com or any of its subsidiaries
           or its affiliates. All product and company names are the registered
