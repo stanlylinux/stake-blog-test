@@ -47,7 +47,7 @@ export const MainArticle = ({
       <div className="mt-[15px] md:col-span-2">
         <p className="font-bold text-lg">{title}</p>
         <div
-          className="mt-[10px] text-lightGray text-sm lightGray-important"
+          className="mt-[10px] dangreous-div text-lightGray text-base lightGray-important"
           dangerouslySetInnerHTML={{
             __html:
               description.trim().length > 100

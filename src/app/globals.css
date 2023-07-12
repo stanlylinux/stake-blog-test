@@ -198,3 +198,19 @@ body {
     padding: 30px 380px;
   }
 }
+
+.dangerous-div h1 {
+  font-weight: bold !important;
+  font-size: 20px !important;
+  color: #fff !important;
+}
+
+.dangerous-div h2 {
+  font-weight: bold !important;
+  font-size: 20px !important;
+  color: #fff !important;
+}
+
+.dangerous-div p {
+  font-size: 16px !important;
+}

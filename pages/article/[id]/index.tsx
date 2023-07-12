@@ -54,7 +54,7 @@ export default function Article() {
                 />
               </div>
               <div
-                className="text-lightGray text-base lightGray-important"
+                className="text-lightGray text-base lightGray-important dangerous-div"
                 dangerouslySetInnerHTML={{
                   __html: replaceWithBr(detail.attributes.description),
                 }}
