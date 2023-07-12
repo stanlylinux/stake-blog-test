@@ -49,7 +49,7 @@ export default function Article() {
               <div className="my-8">
                 <img src={detail.attributes.image_url} alt="No Image" />
               </div>
-              <p
+              <div
                 className="text-lightGray text-base lightGray-important"
                 dangerouslySetInnerHTML={{
                   __html: replaceWithBr(detail.attributes.description),
