@@ -39,12 +39,14 @@ export default function Article() {
                 </p>
                 <div className="flex gap-[1rem]">
                   <a
+                    target="_blank"
                     href={detail.attributes.fb_link}
                     className="rounded-full bg-darkBlue p-[12px] cursor-pointer"
                   >
                     <FaFacebookF />
                   </a>
                   <a
+                    target="_blank"
                     href={detail.attributes.twitter_link}
                     className="rounded-full bg-darkBlue p-[12px] cursor-pointer"
                   >
