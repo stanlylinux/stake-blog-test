@@ -36,7 +36,7 @@ export const ArticleBox = ({
       className="flex flex-col gap-y-3 cursor-pointer article-container"
     >
       <img
-        className="pt-[0.9em] article-img ease-in-out duration-300 h-[200px]"
+        className="pt-[0.9em] article-img ease-in-out duration-300"
         src={imageUrl}
         alt="No Image"
       />
