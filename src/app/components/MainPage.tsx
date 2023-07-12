@@ -47,7 +47,7 @@ export const MainPage = ({
       <div
         className={`${
           thisCurrentData.category && "pt-[52px]"
-        } bg-darkSecondBlue w-full min-w-[1440px] px-4 md:px-10 lg:px-[12em] py-6 flex flex-col gap-[24px] items-center`}
+        } bg-darkSecondBlue w-full max-w-[1440px] px-4 md:px-10 lg:px-[12em] py-6 flex flex-col gap-[24px] items-center`}
       >
         {!doneLoading ? (
           <div className="my-[2rem] mx-auto w-full text-center">
