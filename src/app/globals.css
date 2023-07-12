@@ -199,18 +199,32 @@ body {
   }
 }
 
+.dangerous-div {
+  padding: 0;
+  margin: 0;
+}
+
 .dangerous-div h1 {
   font-weight: bold !important;
   font-size: 20px !important;
   color: #fff !important;
+  padding: 0;
+  margin: 0;
+  line-height: 0.1;
 }
 
 .dangerous-div h2 {
   font-weight: bold !important;
   font-size: 20px !important;
   color: #fff !important;
+  padding: 0;
+  margin: 0;
+  line-height: 0.1;
 }
 
 .dangerous-div p {
   font-size: 16px !important;
+  padding: 0;
+  margin: 0;
+  line-height: 0.1;
 }
