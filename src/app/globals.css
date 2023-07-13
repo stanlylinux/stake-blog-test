@@ -195,7 +195,7 @@ body {
 
 @media (min-width: 1536px) {
   .detail-container {
-    padding: 30px 400px;
+    padding: 30px 600px;
   }
 }
 
@@ -227,4 +227,8 @@ body {
   padding: 0;
   margin: 0;
   line-height: 0.1;
+}
+
+.dangerous-div img {
+  margin: 0 auto;
 }

@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <div className="bg-dark-blue-300 w-full flex flex-col gap-5 px-2 pt-6 pb-24 lg:py-16 box-border items-center justify-center text-[0.75rem] text-lightsteelblue ">
+    <div className="bg-dark-blue-300 mx-auto w-full flex flex-col gap-5 px-2 pt-6 pb-24 lg:py-16 box-border items-center justify-center text-[0.75rem] text-lightsteelblue ">
       <div className="grid grid-cols-2 md:flex md:justify-between gap-6 md:gap-12 lg:gap-24 place-items-center">
         <img alt="ufc" src="/ufc-partner.svg" />
         <img alt="alfa" src="/alfa-logo.svg" />
