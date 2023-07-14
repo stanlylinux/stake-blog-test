@@ -34,9 +34,17 @@ export default function Article() {
                 {detail.attributes.title}
               </p>
               <div className="flex justify-between items-center my-3">
-                <p className="text-[12px] text-lightGray">
-                  Stake88 - {detail.attributes.article_date}
-                </p>
+                <div className="flex gap-x-2 items-center justify-start">
+                  <img
+                    alt="author-img"
+                    className="detail-img rounded-full"
+                    src={detail.attributes.author_image_url}
+                  />
+                  <p className="text-[12px] text-lightGray">
+                    {detail.attributes.author} -{" "}
+                    {detail.attributes.article_date}
+                  </p>
+                </div>
                 <div className="flex gap-[1rem]">
                   <a
                     target="_blank"

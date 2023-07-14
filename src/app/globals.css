@@ -232,3 +232,8 @@ body {
 .dangerous-div img {
   margin: 0 auto;
 }
+
+.detail-img {
+  width: 45px !important;
+  height: 45px !important;
+}
