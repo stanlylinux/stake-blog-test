@@ -30,7 +30,7 @@ export default function Article() {
         {detail ? (
           <div className="pt-[52px] bg-darkSecondBlue">
             <div className="detail-container py-[30px]">
-              <p className="text-center md:text-left text-[28px] font-semibold">
+              <p className="text-left text-[28px] font-semibold">
                 {detail.attributes.title}
               </p>
               <div className="flex justify-between items-center my-3">
