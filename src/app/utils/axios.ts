@@ -17,8 +17,8 @@ export const apiAdmin = axios.create({
 //         "https://stake-cms.up.railway.app/api/auth/local",
 //         // "http://localhost:1337/api/auth/local",
 //         {
-//           identifier: "admin",
-//           password: "SelamatJalan1!",
+//           identifier: "lalalalala",
+//           password: "ajsdlakjsdlajsdj",
 //         }
 //       );
 
