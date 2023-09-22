@@ -2,6 +2,7 @@ import { Footer } from "@/app/components/Footer";
 import { BiBasketball } from "react-icons/bi";
 import { MdCasino } from "react-icons/md";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 interface Props {
   children: any;
@@ -11,6 +12,9 @@ export const MainLayout = ({ children }: Props) => {
   const router = useRouter();
   return (
     <div className="flex relative bg-dark-blue-100">
+      <Head>
+        <title>Blog Stake88 - Panduan, Bocoran dan Berita Terbaru</title>
+      </Head>
       {/* <div className="h-[100vh] w-[240px] z-[100] fixed bg-darkBlue">
         <div className="w-[240px] z-99 h-[70px] bg-darkBlue flex justify-center items-center boxSh gap-x-2">
           <div className="flex items-center cursor-pointer">
