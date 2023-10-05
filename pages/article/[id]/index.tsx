@@ -62,7 +62,11 @@ export default function Article() {
                 </div>
               </div>
               <div className="my-8">
-                <img className="w-full" src={detail.image_url} alt="No Image" />
+                <img
+                  className="w-full"
+                  src={detail.article_image_url}
+                  alt="No Image"
+                />
               </div>
               <div
                 className="text-lightGray text-base lightGray-important dangerous-div"
