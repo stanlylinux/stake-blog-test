@@ -18,11 +18,11 @@ export default function Article() {
   const router = useRouter();
   const articleDetail = useSelector((state: RootState) => state.articleDetail);
   const { data: articleDetailResult } = useSWR(
-    `/api/articles/${router.query.id}`,
+    `/articles/${router.query.id}`,
     fetcher
   );
 
-  const detail = articleDetailResult?.data.data;
+  const detail = articleDetailResult?.data;
   console.log(detail, "<<< DETAIL");
   return (
     <Provider store={store}>
@@ -31,31 +31,30 @@ export default function Article() {
           <div className="pt-[52px] bg-darkSecondBlue">
             <div className="detail-container py-[30px]">
               <p className="text-left text-[28px] font-semibold">
-                {detail.attributes.title}
+                {detail.article_title}
               </p>
               <div className="flex justify-between items-center my-3">
                 <div className="flex gap-x-2 items-center justify-start">
                   <img
                     alt="author-img"
                     className="detail-img rounded-full"
-                    src={detail.attributes.author_image_url}
+                    src={detail.author_image_url}
                   />
                   <p className="text-[12px] text-lightGray">
-                    {detail.attributes.author} -{" "}
-                    {detail.attributes.article_date}
+                    {detail.author} - {detail.article_date}
                   </p>
                 </div>
                 <div className="flex gap-[1rem]">
                   <a
                     target="_blank"
-                    href={detail.attributes.fb_link}
+                    href={""}
                     className="rounded-full bg-darkBlue p-[12px] cursor-pointer"
                   >
                     <FaFacebookF />
                   </a>
                   <a
                     target="_blank"
-                    href={detail.attributes.twitter_link}
+                    href={""}
                     className="rounded-full bg-darkBlue p-[12px] cursor-pointer"
                   >
                     <FaTwitter />
@@ -63,16 +62,12 @@ export default function Article() {
                 </div>
               </div>
               <div className="my-8">
-                <img
-                  className="w-full"
-                  src={detail.attributes.image_url}
-                  alt="No Image"
-                />
+                <img className="w-full" src={detail.image_url} alt="No Image" />
               </div>
               <div
                 className="text-lightGray text-base lightGray-important dangerous-div"
                 dangerouslySetInnerHTML={{
-                  __html: replaceWithBr(detail.attributes.description),
+                  __html: replaceWithBr(detail.description),
                 }}
               />
             </div>

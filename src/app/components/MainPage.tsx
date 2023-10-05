@@ -64,37 +64,32 @@ export const MainPage = ({
           </div>
         ) : (
           <div className="">
-            {mainArticleData &&
-              mainArticleData.length > 0 &&
-              mainArticleData[0].attributes && (
-                <MainArticle
-                  setCurrentData={setCurrentData}
-                  title={mainArticleData[0].attributes.title}
-                  description={mainArticleData[0].attributes.description}
-                  imageUrl={mainArticleData[0].attributes.image_url}
-                  articleDate={mainArticleData[0].attributes.article_date}
-                  id={mainArticleData[0].id}
-                  scrollToTop={scrollToTop}
-                />
-              )}
+            {mainArticleData && (
+              <MainArticle
+                setCurrentData={setCurrentData}
+                title={mainArticleData.article_title}
+                description={mainArticleData.description}
+                imageUrl={mainArticleData.image_url}
+                articleDate={mainArticleData.article_date}
+                id={mainArticleData.id}
+                scrollToTop={scrollToTop}
+              />
+            )}
             <div
               ref={thisScrollToTop}
               className="grid sm:grid-cols-2 lg:grid-cols-3 mt-[30px] gap-6"
             >
               {iconData &&
-                iconData.map(
-                  (icon: any, idx: any) =>
-                    icon.attributes.title.toLowerCase() !== "main" && (
-                      <IconBox
-                        setCurrentData={setCurrentData}
-                        scrollToTop={scrollToTop}
-                        key={idx}
-                        imageUrl={icon.attributes.image_url}
-                        title={icon.attributes.title}
-                        id={icon.id}
-                      />
-                    )
-                )}
+                iconData.map((icon: any, idx: any) => (
+                  <IconBox
+                    setCurrentData={setCurrentData}
+                    scrollToTop={scrollToTop}
+                    key={idx}
+                    imageUrl={icon.category_image_url}
+                    title={icon.category_title}
+                    id={icon.id}
+                  />
+                ))}
             </div>
             {!articleDoneLoading ? (
               <div className="my-[4rem] mx-auto w-full text-center">
@@ -114,10 +109,10 @@ export const MainPage = ({
                 {articleData &&
                   articleData.map((article: any, idx: any) => (
                     <ArticleBox
-                      title={article.attributes.title}
-                      description={article.attributes.description}
-                      imageUrl={article.attributes.image_url}
-                      articleDate={article.attributes.article_date}
+                      title={article.article_title}
+                      description={article.description}
+                      imageUrl={article.article_image_url}
+                      articleDate={article.article_date}
                       key={idx}
                       id={article.id}
                     />

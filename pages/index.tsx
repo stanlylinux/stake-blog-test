@@ -14,20 +14,14 @@ export default function HomePage() {
     categoryPage: 1,
   });
   const [articlePage, setArticlePage] = useState(1);
-  const { data: articlesResult } = useSWR(
-    `/api/articles?populate=*&sort=id&pagination[page]=${articlePage}&pagination[pageSize]=6`,
-    fetcher
-  );
-  const { data: mainArticlesResult } = useSWR(
-    `/api/articles?filters[main][$eq]=true`,
-    fetcher
-  );
-  const { data: iconsResult } = useSWR("/api/categories", fetcher);
+  const { data: articlesResult } = useSWR(`/articles`, fetcher);
+  const { data: iconsResult } = useSWR("/categories", fetcher);
 
-  const articleData = articlesResult?.data.data;
+  const articleData = articlesResult?.data;
   const articleMeta = articlesResult?.data.meta;
-  const mainArticleData = mainArticlesResult?.data.data;
-  const iconData = iconsResult?.data.data;
+  const mainArticleData = articleData?.find((article: any) => article.main);
+  console.log(mainArticleData, "<<<<");
+  const iconData = iconsResult?.data;
   const doneLoading = iconData;
   const articleDoneLoading = articleData;
 

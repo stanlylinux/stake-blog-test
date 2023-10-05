@@ -15,22 +15,18 @@ export default function Category() {
   const category = useSelector((state: RootState) => state.category);
   const [page, setPage] = useState(1);
   const { data: categoryArticleResult } = useSWR(
-    `/api/articles?populate=*&sort=id&pagination[page]=${page}&pagination[pageSize]=6&filters[category][id][$eq]=${router.query.id}`,
+    `categories/${router.query.id}`,
     fetcher
   );
-  const categoryArticleData = categoryArticleResult?.data.data;
-  const categoryArticleMeta = categoryArticleResult?.data.meta;
+  const categoryArticleData = categoryArticleResult?.data;
+  // const categoryArticleMeta = categoryArticleResult?.data.meta;
 
-  const nextDisabled =
-    categoryArticleData &&
-    (categoryArticleData.length === 0 ||
-      categoryArticleMeta.pagination.page ===
-        categoryArticleMeta.pagination.pageCount);
+  const nextDisabled = categoryArticleData && categoryArticleData.length === 0;
+  // categoryArticleMeta.pagination.page ===
+  //   categoryArticleMeta.pagination.pageCount);
 
-  const prevDisabled =
-    categoryArticleData &&
-    (categoryArticleData.length === 0 ||
-      categoryArticleMeta.pagination.page === 1);
+  const prevDisabled = categoryArticleData && categoryArticleData.length === 0;
+  // categoryArticleMeta.pagination.page === 1);
 
   return (
     <MainLayout>
@@ -57,10 +53,10 @@ export default function Category() {
               {categoryArticleData && categoryArticleData.length > 0 ? (
                 categoryArticleData.map((article: any, idx: any) => (
                   <ArticleBox
-                    title={article.attributes.title}
-                    description={article.attributes.description}
-                    imageUrl={article.attributes.image_url}
-                    articleDate={article.attributes.article_date}
+                    title={article.article_title}
+                    description={article.description}
+                    imageUrl={article.article_image_url}
+                    articleDate={article.article_date}
                     id={article.id}
                     key={idx}
                   />
@@ -87,7 +83,7 @@ export default function Category() {
             >
               <a
                 onClick={() => {
-                  if (prevDisabled) return;
+                  if (true) return;
                   scrollToTop.current?.scrollIntoView({
                     behavior: "smooth",
                     block: "start",
@@ -96,14 +92,14 @@ export default function Category() {
                   setPage((prevState: any) => prevState - 1);
                 }}
                 className={`${
-                  prevDisabled ? "text-superGray" : "cursor-pointer text-white"
+                  true ? "text-superGray" : "cursor-pointer text-white"
                 }`}
               >
                 Sebelumnya
               </a>
               <a
                 onClick={() => {
-                  if (nextDisabled) return;
+                  if (true) return;
                   scrollToTop.current?.scrollIntoView({
                     behavior: "smooth",
                     block: "start",
@@ -112,7 +108,7 @@ export default function Category() {
                   setPage((prevState: any) => prevState + 1);
                 }}
                 className={`font-semibold ${
-                  nextDisabled ? "text-superGray" : "cursor-pointer text-white"
+                  true ? "text-superGray" : "cursor-pointer text-white"
                 }`}
               >
                 Berikutnya
