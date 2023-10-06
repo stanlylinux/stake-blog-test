@@ -2,6 +2,7 @@
   "name": "stake-blog",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://playerjone88.github.io/stake88-blog",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
