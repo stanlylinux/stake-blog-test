@@ -20,10 +20,8 @@ export default function HomePage() {
   const articleData = articlesResult?.data;
   const articleMeta = articlesResult?.data.meta;
   const mainArticleData = articleData?.find((article: any) => article.main);
-  console.log(mainArticleData, "<<<<");
   const iconData = iconsResult?.data;
   const doneLoading = iconData;
-  const articleDoneLoading = articleData;
 
   return (
     <MainLayout>
@@ -38,7 +36,6 @@ export default function HomePage() {
           articlePage={articlePage}
           setArticlePage={setArticlePage}
           articleMeta={articleMeta}
-          articleDoneLoading={articleDoneLoading}
           mainArticleData={mainArticleData}
         />
       </div>

@@ -2,7 +2,9 @@ import { FidgetSpinner } from "react-loader-spinner";
 import { ArticleBox } from "./ArticleBox";
 import { IconBox } from "./IconBox";
 import { MainArticle } from "./MainArticle";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import useSWR from "swr";
+import { fetcher } from "../utils/axios";
 
 interface Props {
   iconData: any;
@@ -15,7 +17,6 @@ interface Props {
   articlePage: any;
   setArticlePage: (param1: any) => void;
   articleMeta: any;
-  articleDoneLoading: boolean;
 }
 
 export const MainPage = ({
@@ -28,10 +29,16 @@ export const MainPage = ({
   articlePage,
   setArticlePage,
   articleMeta,
-  articleDoneLoading,
   mainArticleData,
 }: Props) => {
   const thisScrollToTop = useRef<HTMLInputElement>(null);
+  const [page, setPage] = useState(1);
+  const { data: articlesResult } = useSWR(
+    `/articles/paginate?page=${page}`,
+    fetcher
+  );
+  const articlesData = articlesResult?.data;
+  const articleDoneLoading = articlesData;
   return (
     <div>
       {!thisCurrentData.category && (
@@ -106,8 +113,9 @@ export const MainPage = ({
               </div>
             ) : (
               <div className="my-[30px] grid grid-cols-2 md:grid-cols-3 gap-6">
-                {articleData &&
-                  articleData.map((article: any, idx: any) => (
+                {articlesData &&
+                  articlesData.data &&
+                  articlesData.data.map((article: any, idx: any) => (
                     <ArticleBox
                       title={article.article_title}
                       description={article.description}
@@ -122,8 +130,8 @@ export const MainPage = ({
             <div className="flex justify-center items-center gap-x-[50px] mt-[50px]">
               <a
                 onClick={() => {
-                  if (articleMeta && articleMeta.pagination.page === 1) return;
-                  setArticlePage((prevState: any) => prevState - 1);
+                  if (articlesData && articlesData.page === 1) return;
+                  setPage((prevState: any) => prevState - 1);
                   thisScrollToTop.current?.scrollIntoView({
                     behavior: "smooth",
                     block: "start",
@@ -131,9 +139,9 @@ export const MainPage = ({
                   });
                 }}
                 className={`font-semibold ${
-                  articleMeta && articleMeta.pagination.page !== 1
-                    ? "cursor-pointer text-white"
-                    : "text-superGray"
+                  !articlesData || (articlesData && articlesData.page === 1)
+                    ? "text-superGray"
+                    : "cursor-pointer text-white"
                 }`}
               >
                 Sebelumnya
@@ -141,12 +149,11 @@ export const MainPage = ({
               <a
                 onClick={() => {
                   if (
-                    articleMeta &&
-                    articleMeta.pagination.page ==
-                      articleMeta.pagination.pageCount
+                    articlesData &&
+                    articlesData.page == articlesData.pageCount
                   )
                     return;
-                  setArticlePage((prevState: any) => prevState + 1);
+                  setPage((prevState: any) => prevState + 1);
                   thisScrollToTop.current?.scrollIntoView({
                     behavior: "smooth",
                     block: "start",
@@ -154,11 +161,12 @@ export const MainPage = ({
                   });
                 }}
                 className={`font-semibold ${
-                  articleMeta &&
-                  articleMeta.pagination.page !==
-                    articleMeta.pagination.pageCount
-                    ? "cursor-pointer text-white"
-                    : "text-superGray"
+                  !articlesData ||
+                  (articlesData &&
+                    articlesData.page === articlesData.pageCount) ||
+                  (articlesData && articlesData.page === articlesData.pageCount)
+                    ? "text-superGray"
+                    : "cursor-pointer text-white"
                 }`}
               >
                 Berikutnya

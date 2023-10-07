@@ -15,18 +15,10 @@ export default function Category() {
   const category = useSelector((state: RootState) => state.category);
   const [page, setPage] = useState(1);
   const { data: categoryArticleResult } = useSWR(
-    `categories/${router.query.id}`,
+    `categories/${router.query.id}?page${page}`,
     fetcher
   );
   const categoryArticleData = categoryArticleResult?.data;
-  // const categoryArticleMeta = categoryArticleResult?.data.meta;
-
-  const nextDisabled = categoryArticleData && categoryArticleData.length === 0;
-  // categoryArticleMeta.pagination.page ===
-  //   categoryArticleMeta.pagination.pageCount);
-
-  const prevDisabled = categoryArticleData && categoryArticleData.length === 0;
-  // categoryArticleMeta.pagination.page === 1);
 
   return (
     <MainLayout>
@@ -45,13 +37,15 @@ export default function Category() {
           <div className="max-w-[1440px] mx-auto w-full px-4 md:px-10 lg:px-[12em]">
             <div
               className={`my-[30px] ${
-                categoryArticleData && categoryArticleData.length > 0
+                categoryArticleData &&
+                categoryArticleData.data &&
+                categoryArticleData.data.length > 0
                   ? "grid grid-cols-2 md:grid-cols-3 gap-6"
                   : ""
               }`}
             >
-              {categoryArticleData && categoryArticleData.length > 0 ? (
-                categoryArticleData.map((article: any, idx: any) => (
+              {categoryArticleData && categoryArticleData.data ? (
+                categoryArticleData.data.map((article: any, idx: any) => (
                   <ArticleBox
                     title={article.article_title}
                     description={article.description}
@@ -71,19 +65,23 @@ export default function Category() {
               style={{
                 display:
                   categoryArticleData &&
-                  categoryArticleData.length === 0 &&
+                  categoryArticleData.data &&
+                  categoryArticleData.data.length === 0 &&
                   "none",
                 padding: "30px 0",
               }}
               className={`font-semibold ${
-                categoryArticleData && categoryArticleData.length > 0
+                categoryArticleData &&
+                categoryArticleData.data &&
+                categoryArticleData.data.length > 0
                   ? ""
                   : "hidden"
               } flex justify-center items-center gap-x-[50px] my-[50px]`}
             >
               <a
                 onClick={() => {
-                  if (true) return;
+                  if (categoryArticleData && categoryArticleData.page === 1)
+                    return;
                   scrollToTop.current?.scrollIntoView({
                     behavior: "smooth",
                     block: "start",
@@ -92,14 +90,21 @@ export default function Category() {
                   setPage((prevState: any) => prevState - 1);
                 }}
                 className={`${
-                  true ? "text-superGray" : "cursor-pointer text-white"
+                  !categoryArticleData ||
+                  (categoryArticleData && categoryArticleData.page === 1)
+                    ? "text-superGray"
+                    : "cursor-pointer text-white"
                 }`}
               >
                 Sebelumnya
               </a>
               <a
                 onClick={() => {
-                  if (true) return;
+                  if (
+                    categoryArticleData &&
+                    categoryArticleData.page === categoryArticleData.pageCount
+                  )
+                    return;
                   scrollToTop.current?.scrollIntoView({
                     behavior: "smooth",
                     block: "start",
@@ -108,7 +113,14 @@ export default function Category() {
                   setPage((prevState: any) => prevState + 1);
                 }}
                 className={`font-semibold ${
-                  true ? "text-superGray" : "cursor-pointer text-white"
+                  !categoryArticleData ||
+                  (categoryArticleData &&
+                    categoryArticleData.page ===
+                      categoryArticleData.pageCount) ||
+                  (categoryArticleData &&
+                    categoryArticleData.page !== categoryArticleData.pageCount)
+                    ? "text-superGray"
+                    : "cursor-pointer text-white"
                 }`}
               >
                 Berikutnya
