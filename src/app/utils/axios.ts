@@ -3,8 +3,8 @@ import Cookies from "js-cookie";
 
 export const apiAdmin = axios.create({
   // baseURL: "https://stake88.up.railway.app",
-  // baseURL: "https://stake88-server.up.railway.app",
-  baseURL: "http://localhost:8000",
+  baseURL: "https://stake88-server.up.railway.app",
+  // baseURL: "http://localhost:8000",
   // baseURL: "http://localhost:1337",
   // headers: {
   //   Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`,
